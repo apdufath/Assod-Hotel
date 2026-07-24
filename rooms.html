@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/logo.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -16,7 +16,7 @@
       theme: {
         extend: {
           colors: { brand: { green: "#0B7A3E", red: "#D62828", light: "#F8F9FA", dark: "#222222" } },
-          fontFamily: { display: ['"Cormorant Garamond"', "Georgia", "serif"], sans: ['"Manrope"', "system-ui", "sans-serif"] }
+          fontFamily: { display: ['"Inter"', "system-ui", "sans-serif"], sans: ['"Inter"', "system-ui", "sans-serif"] }
         }
       }
     };
@@ -79,7 +79,7 @@
       <div class="hero-overlay"></div>
       <div class="page-hero-content container-assod">
         <p class="section-kicker !text-white/90 mb-3" style="color:#fff">Accommodations</p>
-        <h1 class="font-display text-5xl md:text-6xl font-semibold">Rooms & Suites</h1>
+        <h1 class="font-display text-4xl md:text-5xl font-bold">Rooms & Suites</h1>
         <p class="max-w-xl mt-3 text-white/85">Luxury Room · Standard Room · Family Room · Executive Suite</p>
       </div>
     </section>
@@ -97,7 +97,7 @@
 
     <section class="py-16 surface">
       <div class="container-assod text-center reveal">
-        <h2 class="font-display text-4xl font-semibold mb-4">Need help choosing a room?</h2>
+        <h2 class="font-display text-2xl md:text-3xl font-semibold mb-4">Need help choosing a room?</h2>
         <p class="section-lead mx-auto mb-8">Call our reservations team or send an email with your preferred dates and room type.</p>
         <div class="flex flex-wrap justify-center gap-3">
           <a href="booking.html" class="btn btn-primary">Book Now</a>
@@ -112,7 +112,7 @@
       <div>
         <div class="flex items-center gap-3 mb-4">
           <img src="assets/logo.png" alt="Assod Hotel" class="w-12 h-12 bg-white rounded-full p-1" />
-          <span class="font-display text-2xl font-semibold text-white">Assod Hotel</span>
+          <span class="font-display text-xl font-semibold text-white">Assod Hotel</span>
         </div>
         <p class="text-white/70 text-sm mb-5">Luxury hospitality on Principal Road, Hargeisa.</p>
         <a href="https://facebook.com" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">f</a>
@@ -138,8 +138,7 @@
       </div>
       <div>
         <h3 class="font-bold text-white mb-4">Find Us</h3>
-        <div class="map-placeholder !min-h-[160px] !text-white/70 !border-white/20">
-          <div><div class="font-semibold text-white mb-1">Google Map Placeholder</div><div class="text-xs">Principal Road, Hargeisa</div></div>
+        <div data-map-embed data-map-height="180" data-map-variant="footer"></div>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/logo.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -19,8 +19,8 @@
             brand: { green: "#0B7A3E", red: "#D62828", light: "#F8F9FA", dark: "#222222" }
           },
           fontFamily: {
-            display: ['"Cormorant Garamond"', "Georgia", "serif"],
-            sans: ['"Manrope"', "system-ui", "sans-serif"]
+            display: ['Inter', 'system-ui', 'sans-serif'],
+            sans: ['"Inter"', "system-ui", "sans-serif"]
           }
         }
       }
@@ -209,7 +209,7 @@
     <section class="py-20 relative overflow-hidden">
       <div class="absolute inset-0" style="background:linear-gradient(135deg,#0B7A3E 0%,#085c2e 55%,#8b1c1c 100%)"></div>
       <div class="container-assod relative z-10 text-white text-center reveal">
-        <h2 class="font-display text-4xl md:text-5xl font-semibold mb-4">Ready for your stay in Hargeisa?</h2>
+        <h2 class="font-display text-3xl md:text-4xl font-semibold mb-4">Ready for your stay in Hargeisa?</h2>
         <p class="max-w-xl mx-auto text-white/85 mb-8">Reserve your room today and experience modern luxury with genuine Somali hospitality at Assod Hotel.</p>
         <div class="flex flex-wrap justify-center gap-3">
           <a href="booking.html" class="btn bg-white text-brand-green hover:bg-brand-light">Book Your Stay</a>
@@ -225,7 +225,7 @@
       <div>
         <div class="flex items-center gap-3 mb-4">
           <img src="assets/logo.png" alt="Assod Hotel" class="w-12 h-12 bg-white rounded-full p-1" />
-          <span class="font-display text-2xl font-semibold text-white">Assod Hotel</span>
+          <span class="font-display text-xl font-semibold text-white">Assod Hotel</span>
         </div>
         <p class="text-white/70 text-sm leading-relaxed mb-5">Luxury hospitality on Principal Road, Hargeisa — crafted for comfort, events, and memorable stays.</p>
         <a href="https://facebook.com" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">f</a>
@@ -254,11 +254,7 @@
       </div>
       <div>
         <h3 class="font-bold text-white mb-4">Find Us</h3>
-        <div class="map-placeholder !min-h-[180px] !text-white/70 !border-white/20">
-          <div>
-            <div class="font-semibold text-white mb-1">Google Map Placeholder</div>
-            <div class="text-xs">Principal Road, Hargeisa</div>
-          </div>
+        <div data-map-embed data-map-height="180" data-map-variant="footer"></div>
         </div>
       </div>
     </div>

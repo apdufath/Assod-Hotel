@@ -23,6 +23,13 @@
       social: {
         facebook: "https://facebook.com",
       },
+      map: {
+        lat: 9.562741,
+        lng: 44.046787,
+        link: "https://www.bing.com/maps?q=ASSOD+HOTEL&cp=9.562741~44.046787&lvl=15&ss=ypid.YNABA3767EC2CADBE3",
+        embedBase:
+          "https://www.bing.com/maps/embed?cp=9.562741~44.046787&lvl=16&typ=d&sty=r&src=SHELL&FORM=MBEDV8",
+      },
     },
 
     stats: [
@@ -565,7 +572,7 @@
         </div>
         <div class="p-6">
           <div class="flex items-start justify-between gap-3 mb-2">
-            <h3 class="font-display text-2xl font-semibold">${room.name}</h3>
+            <h3 class="font-display text-xl font-semibold">${room.name}</h3>
             <div class="rating text-sm">${stars(room.rating)}</div>
           </div>
           <div class="price-tag mb-3">$${room.price} <span>/ night</span></div>
@@ -653,7 +660,7 @@
           <img src="${m.image}" alt="${m.title}" class="w-full h-full object-cover" loading="lazy" />
         </div>
         <div class="p-6">
-          <h3 class="font-display text-2xl font-semibold mb-2">${m.title}</h3>
+          <h3 class="font-display text-xl font-semibold mb-2">${m.title}</h3>
           <p class="text-sm" style="color:var(--text-muted)">${m.text}</p>
         </div>
       </article>`
@@ -703,7 +710,7 @@
           <img src="${m.image}" alt="${m.title}" class="w-full h-full object-cover" loading="lazy" />
         </div>
         <div class="p-6">
-          <h3 class="font-display text-2xl font-semibold mb-2">${m.title}</h3>
+          <h3 class="font-display text-xl font-semibold mb-2">${m.title}</h3>
           <p class="text-sm mb-5" style="color:var(--text-muted)">${m.text}</p>
           <a href="restaurant.html" class="btn btn-outline-dark">Learn More</a>
         </div>
@@ -800,7 +807,7 @@
       backdrop.innerHTML = `
         <div class="modal-card" role="dialog" aria-modal="true">
           <div class="success-icon">✓</div>
-          <h3 class="font-display text-3xl font-semibold mb-2" data-success-title>Success</h3>
+          <h3 class="font-display text-2xl font-semibold mb-2" data-success-title>Success</h3>
           <p class="mb-6" style="color:var(--text-muted)" data-success-message></p>
           <button type="button" class="btn btn-primary w-full" data-success-close>Close</button>
         </div>`;
@@ -1008,6 +1015,39 @@
   }
 
   /* ---------------------------------------------------------
+     Bing Maps embeds (Assod Hotel location)
+     --------------------------------------------------------- */
+  function initMaps() {
+    const map = AssodData.hotel.map;
+    if (!map) return;
+
+    qsa("[data-map-embed]").forEach((el) => {
+      const height = el.dataset.mapHeight || "220";
+      const showLink = el.dataset.mapLink !== "false";
+      const variant = el.dataset.mapVariant || "";
+      const classes = ["map-embed", variant === "footer" ? "is-footer" : "", variant === "large" ? "is-large" : ""]
+        .filter(Boolean)
+        .join(" ");
+
+      el.innerHTML = `
+        <div class="${classes}" style="min-height:${height}px">
+          <iframe
+            title="Assod Hotel location on Bing Maps"
+            src="${map.embedBase}&h=${height}&w=800"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+        ${
+          showLink
+            ? `<a class="map-embed-link${variant === "footer" ? " !text-white/85" : ""}" href="${map.link}" target="_blank" rel="noopener">Open in Bing Maps ↗</a>`
+            : ""
+        }`;
+    });
+  }
+
+  /* ---------------------------------------------------------
      Restaurant Menu page (data from js/menu-data.js)
      --------------------------------------------------------- */
   function formatMoney(value) {
@@ -1120,7 +1160,7 @@
                 <img src="${cat.image}" alt="${cat.name}" loading="lazy" />
                 <div class="banner-copy">
                   <p class="text-xs font-bold tracking-[0.18em] uppercase text-white/80 mb-2">Category</p>
-                  <h2 class="font-display text-3xl md:text-4xl font-semibold">${cat.name}</h2>
+                  <h2 class="font-display text-2xl md:text-3xl font-semibold">${cat.name}</h2>
                   <p class="text-sm md:text-base text-white/85 mt-2 max-w-2xl">${cat.description}</p>
                 </div>
               </div>
@@ -1192,6 +1232,7 @@
     initBookingForm();
     initContactForm();
     initMenuPage();
+    initMaps();
     initReveal();
     initCounters();
     initBackToTop();
