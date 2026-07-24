@@ -1064,6 +1064,126 @@ html.dark .menu-toolbar {
   scrollbar-width: thin;
 }
 
+.menu-cat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1.35rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.menu-cat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(11, 122, 62, 0.3);
+}
+
+.menu-cat-card:hover .menu-cat-media img {
+  transform: scale(1.08);
+}
+
+.menu-cat-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.menu-cat-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+
+.menu-cat-body {
+  padding: 1.2rem 1.25rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  flex: 1;
+}
+
+.menu-cat-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.menu-cat-count {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, var(--brand-green), var(--brand-green-dark));
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+}
+
+.menu-cat-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--text);
+}
+
+.menu-cat-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0 0 0.35rem;
+  flex: 1;
+}
+
+.menu-categories-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .menu-categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu-categories-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.menu-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.menu-breadcrumb a {
+  color: var(--brand-green);
+  font-weight: 600;
+}
+
+.menu-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
 .menu-item-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -1088,7 +1208,8 @@ html.dark .menu-toolbar {
 
 .menu-card-media {
   position: relative;
-  height: 200px;
+  aspect-ratio: 16 / 9;
+  height: auto;
   overflow: hidden;
   background: var(--surface-2);
 }
@@ -1097,6 +1218,7 @@ html.dark .menu-toolbar {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 0.55s ease;
 }
 

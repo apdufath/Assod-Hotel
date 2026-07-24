@@ -113,8 +113,7 @@
           "Lunch: 12:00 PM – 3:00 PM",
           "Dinner: 6:00 PM – 10:30 PM",
         ],
-        image:
-          "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
+        image: "assets/outdoor-cafeteria.png",
         link: "restaurant.html",
       },
       {
@@ -255,8 +254,9 @@
       {
         id: 3,
         category: "restaurant",
-        title: "Fine Dining",
-        image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
+        title: "Outdoor Cafeteria",
+        image: "assets/outdoor-cafeteria.png",
+        wide: true,
       },
       {
         id: 4,
@@ -281,7 +281,7 @@
         id: 7,
         category: "garden",
         title: "Garden Courtyard",
-        image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80",
+        image: "assets/outdoor-cafeteria.png",
       },
       {
         id: 8,
@@ -380,7 +380,13 @@
     const current = pageName();
     qsa("[data-nav-link]").forEach((link) => {
       const href = (link.getAttribute("href") || "").toLowerCase();
-      if (href === current || (current === "index.html" && href.endsWith("index.html"))) {
+      const isMenuSection =
+        (current === "menu.html" || current === "menu-category.html") && href === "menu.html";
+      if (
+        href === current ||
+        isMenuSection ||
+        (current === "index.html" && href.endsWith("index.html"))
+      ) {
         link.classList.add("is-active");
       }
     });
@@ -1076,139 +1082,175 @@
   }
 
   function getMenuItemImage(item, category) {
+    if (window.AssodMenuImages && typeof window.AssodMenuImages.resolve === "function") {
+      return window.AssodMenuImages.resolve(item, category);
+    }
     const images = (window.AssodMenu && window.AssodMenu.images) || {};
     if (item.image) return item.image;
     if (item.imageKey && images[item.imageKey]) return images[item.imageKey];
     if (category && category.image) return category.image;
-    return images.default || "";
+    return images.default || "assets/menu/Outdoor_Cafeteria.jpeg";
   }
 
-  function initMenuPage() {
-    const root = qs("[data-menu-page]");
-    if (!root || !window.AssodMenu) return;
+  function renderFoodCard(item, category) {
+    const image = getMenuItemImage(item, category);
+    const priceHtml = item.prices
+      ? `<div class="menu-price-sizes">${formatItemPriceDisplay(item)}</div>`
+      : `<div class="menu-price">${formatItemPriceDisplay(item)}</div>`;
+    const orderLabel = item.prices
+      ? `${item.name} (from ${formatMoney(Object.values(item.prices)[0])})`
+      : `${item.name} (${formatMoney(item.price)})`;
 
-    const menu = window.AssodMenu;
-    const filtersEl = qs("[data-menu-filters]", root);
-    const listEl = qs("[data-menu-list]", root);
-    const searchEl = qs("[data-menu-search]", root);
-    const countEl = qs("[data-menu-count]", root);
-    let activeCategory = "all";
-    let query = "";
-
-    filtersEl.innerHTML = [
-      `<button type="button" class="filter-btn is-active" data-menu-filter="all">All</button>`,
-      ...menu.categories.map(
-        (c) =>
-          `<button type="button" class="filter-btn" data-menu-filter="${c.id}">${c.name}</button>`
-      ),
-    ].join("");
-
-    const matchesItem = (item) => {
-      if (!query) return true;
-      const hay = `${item.name} ${item.description || ""} ${item.subcategory || ""}`.toLowerCase();
-      return hay.includes(query);
-    };
-
-    const renderCard = (item, category) => {
-      const image = getMenuItemImage(item, category);
-      const priceHtml = item.prices
-        ? `<div class="menu-price-sizes">${formatItemPriceDisplay(item)}</div>`
-        : `<div class="menu-price">${formatItemPriceDisplay(item)}</div>`;
-      const orderLabel = item.prices
-        ? `${item.name} (from ${formatMoney(Object.values(item.prices)[0])})`
-        : `${item.name} (${formatMoney(item.price)})`;
-
-      return `
-        <article class="menu-item-card">
-          <div class="menu-card-media">
-            <span class="menu-card-badge">${category.name}</span>
-            <img src="${image}" alt="${escapeAttr(item.name)}" loading="lazy" />
+    return `
+      <article class="menu-item-card">
+        <div class="menu-card-media">
+          <span class="menu-card-badge">${category.name}</span>
+          <img src="${image}" alt="${escapeAttr(item.name)}" loading="lazy" />
+        </div>
+        <div class="menu-card-body">
+          <h3 class="menu-card-title">${item.name}</h3>
+          <p class="menu-card-desc">${item.description || "A carefully prepared Assod Hotel specialty."}</p>
+          <div class="menu-card-footer">
+            ${priceHtml}
+            <button
+              type="button"
+              class="btn btn-primary !py-2.5 !px-4 text-sm menu-order-btn"
+              data-order-item="${escapeAttr(item.name)}"
+              data-order-label="${escapeAttr(orderLabel)}"
+            >Order Now</button>
           </div>
-          <div class="menu-card-body">
-            ${item.subcategory ? `<div class="menu-sub-label">${item.subcategory}</div>` : ""}
-            <h3 class="menu-card-title">${item.name}</h3>
-            <p class="menu-card-desc">${item.description || "A carefully prepared Assod Hotel specialty."}</p>
-            <div class="menu-card-footer">
-              ${priceHtml}
-              <button
-                type="button"
-                class="btn btn-primary !py-2.5 !px-4 text-sm menu-order-btn"
-                data-order-item="${escapeAttr(item.name)}"
-                data-order-label="${escapeAttr(orderLabel)}"
-              >Order Now</button>
-            </div>
-          </div>
-        </article>`;
-    };
+        </div>
+      </article>`;
+  }
 
-    const render = () => {
-      const categories =
-        activeCategory === "all"
-          ? menu.categories
-          : menu.categories.filter((c) => c.id === activeCategory);
-
-      let totalVisible = 0;
-      const html = categories
-        .map((cat) => {
-          const items = cat.items.filter(matchesItem);
-          if (!items.length) return "";
-          totalVisible += items.length;
-
-          return `
-            <section class="menu-section mb-14" id="menu-${cat.id}">
-              <div class="menu-category-banner">
-                <img src="${cat.image}" alt="${cat.name}" loading="lazy" />
-                <div class="banner-copy">
-                  <p class="text-xs font-bold tracking-[0.18em] uppercase text-white/80 mb-2">Category</p>
-                  <h2 class="font-display text-2xl md:text-3xl font-semibold">${cat.name}</h2>
-                  <p class="text-sm md:text-base text-white/85 mt-2 max-w-2xl">${cat.description}</p>
-                </div>
-              </div>
-              <div class="menu-cards-grid">
-                ${items.map((item) => renderCard(item, cat)).join("")}
-              </div>
-            </section>`;
-        })
-        .join("");
-
-      if (!html) {
-        listEl.innerHTML = `<div class="menu-empty">No menu items match your search. Try another keyword or category.</div>`;
-      } else {
-        listEl.innerHTML = html;
-      }
-
-      if (countEl) {
-        countEl.textContent = `${totalVisible} item${totalVisible === 1 ? "" : "s"}`;
-      }
-    };
-
-    filtersEl.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-menu-filter]");
-      if (!btn) return;
-      activeCategory = btn.dataset.menuFilter;
-      qsa("[data-menu-filter]", filtersEl).forEach((b) =>
-        b.classList.toggle("is-active", b === btn)
-      );
-      render();
-    });
-
-    searchEl?.addEventListener("input", () => {
-      query = searchEl.value.trim().toLowerCase();
-      render();
-    });
-
-    listEl.addEventListener("click", (e) => {
+  function bindOrderButtons(root) {
+    root.addEventListener("click", (e) => {
       const btn = e.target.closest("[data-order-item]");
       if (!btn) return;
       const label = btn.dataset.orderLabel || btn.dataset.orderItem;
-      /* Frontend only — replace with POS / API order flow later */
       console.info("Order request (frontend only):", label);
       showSuccessModal(
         "Order Received",
         `Thank you! Your request for “${btn.dataset.orderItem}” has been noted. Please speak with our restaurant team to confirm your order.`
       );
     });
+  }
 
+  /* Main Menu page — category cards only */
+  function initMenuPage() {
+    const root = qs("[data-menu-page]");
+    if (!root || !window.AssodMenu) return;
+
+    const listEl = qs("[data-menu-categories]", root);
+    const searchEl = qs("[data-menu-category-search]", root);
+    const countEl = qs("[data-menu-category-count]", root);
+    if (!listEl) return;
+
+    let query = "";
+
+    const render = () => {
+      const categories = AssodMenu.categories.filter((c) => {
+        if (!query) return true;
+        return `${c.name} ${c.description}`.toLowerCase().includes(query);
+      });
+
+      if (!categories.length) {
+        listEl.innerHTML = `<div class="menu-empty">No categories match your search.</div>`;
+      } else {
+        listEl.innerHTML = categories
+          .map(
+            (c, i) => `
+          <a href="menu-category.html?cat=${encodeURIComponent(c.id)}" class="menu-cat-card reveal is-visible reveal-delay-${(i % 3) + 1}">
+            <div class="menu-cat-media">
+              <img src="${c.image}" alt="${escapeAttr(c.name)}" loading="lazy" />
+            </div>
+            <div class="menu-cat-body">
+              <div class="menu-cat-meta">
+                <span class="menu-cat-count">${c.items.length} item${c.items.length === 1 ? "" : "s"}</span>
+              </div>
+              <h3 class="menu-cat-title">${c.name}</h3>
+              <p class="menu-cat-desc">${c.description}</p>
+              <span class="btn btn-primary !py-2.5 !px-4 text-sm self-start mt-auto">View Menu</span>
+            </div>
+          </a>`
+          )
+          .join("");
+      }
+
+      if (countEl) {
+        countEl.textContent = `${categories.length} categor${categories.length === 1 ? "y" : "ies"}`;
+      }
+    };
+
+    searchEl?.addEventListener("input", () => {
+      query = searchEl.value.trim().toLowerCase();
+      render();
+    });
+
+    render();
+  }
+
+  /* Category detail page — food cards for one category */
+  function initMenuCategoryPage() {
+    const root = qs("[data-menu-category-page]");
+    if (!root || !window.AssodMenu) return;
+
+    const params = new URLSearchParams(location.search);
+    const catId = params.get("cat") || "";
+    const category = AssodMenu.categories.find((c) => c.id === catId);
+
+    const titleEl = qs("[data-cat-title]", root);
+    const descEl = qs("[data-cat-desc]", root);
+    const countEl = qs("[data-cat-count]", root);
+    const heroEl = qs("[data-cat-hero]", root);
+    const listEl = qs("[data-cat-items]", root);
+    const searchEl = qs("[data-cat-search]", root);
+    const crumbEl = qs("[data-cat-crumb]", root);
+
+    if (!category) {
+      if (titleEl) titleEl.textContent = "Category Not Found";
+      if (descEl) descEl.textContent = "Please return to the menu and choose a category.";
+      if (listEl) {
+        listEl.innerHTML = `<div class="menu-empty"><p class="mb-4">This menu category could not be found.</p><a href="menu.html" class="btn btn-primary">Back to Menu</a></div>`;
+      }
+      document.title = "Menu | Assod Hotel";
+      return;
+    }
+
+    document.title = `${category.name} Menu | Assod Hotel`;
+    if (crumbEl) crumbEl.textContent = category.name;
+    if (titleEl) titleEl.textContent = category.name;
+    if (descEl) descEl.textContent = category.description;
+    if (heroEl) heroEl.style.backgroundImage = `url('${category.image}')`;
+
+    let query = "";
+
+    const render = () => {
+      const items = category.items.filter((item) => {
+        if (!query) return true;
+        return `${item.name} ${item.description || ""}`.toLowerCase().includes(query);
+      });
+
+      if (countEl) {
+        countEl.textContent = `${items.length} item${items.length === 1 ? "" : "s"}`;
+      }
+
+      if (!items.length) {
+        listEl.innerHTML = `<div class="menu-empty">No dishes match your search in ${category.name}.</div>`;
+        return;
+      }
+
+      listEl.innerHTML = `<div class="menu-cards-grid">${items
+        .map((item) => renderFoodCard(item, category))
+        .join("")}</div>`;
+    };
+
+    searchEl?.addEventListener("input", () => {
+      query = searchEl.value.trim().toLowerCase();
+      render();
+    });
+
+    bindOrderButtons(listEl);
     render();
   }
 
@@ -1232,6 +1274,7 @@
     initBookingForm();
     initContactForm();
     initMenuPage();
+    initMenuCategoryPage();
     initMaps();
     initReveal();
     initCounters();
