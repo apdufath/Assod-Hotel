@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Assod Hotel — Principal Road, Hargeisa. Phone, WhatsApp, email, and message form." />
+  <title>Contact | Assod Hotel</title>
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: { brand: { green: "#0B7A3E", red: "#D62828", light: "#F8F9FA", dark: "#222222" } },
+          fontFamily: { display: ['"Cormorant Garamond"', "Georgia", "serif"], sans: ['"Manrope"', "system-ui", "sans-serif"] }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="font-sans antialiased">
+  <header class="site-header is-transparent" data-site-header>
+    <div class="container-assod h-full flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-3 shrink-0">
+        <img src="assets/logo.png" alt="Assod Hotel logo" class="w-11 h-11 object-contain" />
+        <span class="brand-name hidden sm:inline">Assod Hotel</span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-6" aria-label="Primary">
+        <a href="index.html" class="nav-link" data-nav-link>Home</a>
+        <a href="about.html" class="nav-link" data-nav-link>About</a>
+        <a href="rooms.html" class="nav-link" data-nav-link>Rooms</a>
+        <a href="restaurant.html" class="nav-link" data-nav-link>Restaurant</a>
+        <a href="menu.html" class="nav-link" data-nav-link>Menu</a>
+        <a href="gallery.html" class="nav-link" data-nav-link>Gallery</a>
+        <a href="services.html" class="nav-link" data-nav-link>Services</a>
+        <a href="booking.html" class="nav-link" data-nav-link>Booking</a>
+        <a href="contact.html" class="nav-link" data-nav-link>Contact</a>
+      </nav>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button type="button" class="icon-btn" data-theme-toggle aria-label="Toggle dark mode">🌙</button>
+        <a href="booking.html" class="btn btn-primary hidden sm:inline-flex !py-2.5 !px-4 text-sm">Book Now</a>
+        <button type="button" class="icon-btn lg:hidden" data-menu-open aria-label="Open menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" data-mobile-menu>
+    <div class="mobile-panel">
+      <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center gap-3">
+          <img src="assets/logo.png" alt="" class="w-10 h-10" />
+          <span class="font-display text-xl font-semibold">Assod Hotel</span>
+        </div>
+        <button type="button" class="icon-btn !text-[inherit] !border-[var(--border)] !bg-[var(--surface-2)]" data-menu-close aria-label="Close menu">×</button>
+      </div>
+      <nav class="flex flex-col gap-4 text-lg font-semibold">
+        <a href="index.html" data-menu-close>Home</a>
+        <a href="about.html" data-menu-close>About</a>
+        <a href="rooms.html" data-menu-close>Rooms</a>
+        <a href="restaurant.html" data-menu-close>Restaurant</a>
+        <a href="menu.html" data-menu-close>Menu</a>
+        <a href="gallery.html" data-menu-close>Gallery</a>
+        <a href="services.html" data-menu-close>Services</a>
+        <a href="booking.html" data-menu-close>Booking</a>
+        <a href="contact.html" data-menu-close>Contact</a>
+      </nav>
+      <a href="booking.html" class="btn btn-primary w-full mt-8">Book Now</a>
+    </div>
+  </div>
+
+  <main>
+    <section class="page-hero">
+      <div class="hero-media" style="background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&amp;fit=crop&amp;w=1800&amp;q=80')"></div>
+      <div class="hero-overlay"></div>
+      <div class="page-hero-content container-assod">
+        <p class="section-kicker !text-white/90 mb-3" style="color:#fff">Get in Touch</p>
+        <h1 class="font-display text-5xl md:text-6xl font-semibold">Contact Us</h1>
+      </div>
+    </section>
+
+    <section class="py-20">
+      <div class="container-assod grid lg:grid-cols-2 gap-10">
+        <div class="reveal">
+          <p class="section-kicker mb-3">Assod Hotel</p>
+          <h2 class="section-title mb-5">We are here to help — day and night</h2>
+          <p class="section-lead mb-8">Reach our front desk anytime. Whether you need a reservation, event inquiry, or travel assistance, our team responds with care.</p>
+
+          <div class="grid sm:grid-cols-2 gap-4 mb-8">
+            <a href="tel:+252523101" class="card p-5 block hover:border-brand-green">
+              <div class="text-xs font-bold uppercase tracking-wider text-brand-green mb-2">Telesom</div>
+              <div class="font-display text-2xl font-semibold">+252 523101</div>
+            </a>
+            <a href="tel:+252301111" class="card p-5 block hover:border-brand-green">
+              <div class="text-xs font-bold uppercase tracking-wider text-brand-green mb-2">Somtel</div>
+              <div class="font-display text-2xl font-semibold">+252 301111</div>
+            </a>
+            <a href="https://wa.me/252523101" target="_blank" rel="noopener" class="card p-5 block hover:border-brand-green">
+              <div class="text-xs font-bold uppercase tracking-wider text-brand-red mb-2">WhatsApp</div>
+              <div class="font-semibold">Chat with reservations</div>
+            </a>
+            <a href="mailto:casood31@gmail.com" class="card p-5 block hover:border-brand-green">
+              <div class="text-xs font-bold uppercase tracking-wider text-brand-green mb-2">Email</div>
+              <div class="font-semibold break-all">casood31@gmail.com</div>
+            </a>
+          </div>
+
+          <div class="card p-6 mb-6">
+            <h3 class="font-bold mb-3">Location</h3>
+            <p style="color:var(--text-muted)">Principal Road<br />Hargeisa<br />Somaliland</p>
+            <p class="mt-4 text-sm font-semibold text-brand-green">Front Desk — Open 24 Hours</p>
+          </div>
+
+          <div class="map-placeholder">
+            <div>
+              <div class="font-semibold mb-1" style="color:var(--text)">Google Map Placeholder</div>
+              <p class="text-sm">Principal Road, Hargeisa, Somaliland</p>
+              <p class="text-xs mt-2">Replace with Google Maps embed when ready</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <form class="card p-6 md:p-8" data-contact-form novalidate>
+            <h3 class="font-display text-3xl font-semibold mb-2">Send a Message</h3>
+            <p class="text-sm mb-8" style="color:var(--text-muted)">Share your question and we will respond as soon as possible.</p>
+
+            <div class="space-y-5">
+              <div>
+                <label class="form-label" for="contactName">Full Name</label>
+                <input class="form-input" type="text" id="contactName" name="contactName" autocomplete="name" placeholder="Your name" />
+                <div class="form-error"></div>
+              </div>
+              <div>
+                <label class="form-label" for="contactEmail">Email</label>
+                <input class="form-input" type="email" id="contactEmail" name="contactEmail" autocomplete="email" placeholder="you@example.com" />
+                <div class="form-error"></div>
+              </div>
+              <div>
+                <label class="form-label" for="contactPhone">Phone (optional)</label>
+                <input class="form-input" type="tel" id="contactPhone" name="contactPhone" autocomplete="tel" placeholder="+252 ..." />
+                <div class="form-error"></div>
+              </div>
+              <div>
+                <label class="form-label" for="contactMessage">Message</label>
+                <textarea class="form-textarea" id="contactMessage" name="contactMessage" rows="5" placeholder="How can we help?"></textarea>
+                <div class="form-error"></div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full mt-6">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer pt-16 pb-8">
+    <div class="container-assod grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <img src="assets/logo.png" alt="Assod Hotel" class="w-12 h-12 bg-white rounded-full p-1" />
+          <span class="font-display text-2xl font-semibold text-white">Assod Hotel</span>
+        </div>
+        <p class="text-white/70 text-sm mb-5">Luxury hospitality on Principal Road, Hargeisa.</p>
+        <a href="https://facebook.com" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+      </div>
+      <div>
+        <h3 class="font-bold text-white mb-4">Quick Links</h3>
+        <ul class="space-y-2 text-sm text-white/75">
+          <li><a href="about.html">About</a></li>
+          <li><a href="rooms.html">Rooms</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold text-white mb-4">Contact</h3>
+        <ul class="space-y-2 text-sm text-white/75">
+          <li>Telesom: <a href="tel:+252523101">+252 523101</a></li>
+          <li>Somtel: <a href="tel:+252301111">+252 301111</a></li>
+          <li><a href="mailto:casood31@gmail.com">casood31@gmail.com</a></li>
+          <li>Principal Road, Hargeisa, Somaliland</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold text-white mb-4">Find Us</h3>
+        <div class="map-placeholder !min-h-[160px] !text-white/70 !border-white/20">
+          <div><div class="font-semibold text-white mb-1">Google Map Placeholder</div><div class="text-xs">Principal Road, Hargeisa</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="container-assod border-t border-white/10 pt-6 text-sm text-white/55">© <span data-year></span> Assod Hotel. All rights reserved.</div>
+  </footer>
+  <script src="js/app.js"></script>
+</body>
+</html>

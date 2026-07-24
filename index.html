@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Assod Hotel — luxury hospitality on Principal Road, Hargeisa, Somaliland." />
+  <title>Assod Hotel | Experience Luxury in Hargeisa</title>
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: { green: "#0B7A3E", red: "#D62828", light: "#F8F9FA", dark: "#222222" }
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', "Georgia", "serif"],
+            sans: ['"Manrope"', "system-ui", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="font-sans antialiased">
+  <!-- Sticky Navigation -->
+  <header class="site-header is-transparent" data-site-header>
+    <div class="container-assod h-full flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-3 shrink-0">
+        <img src="assets/logo.png" alt="Assod Hotel logo" class="w-11 h-11 object-contain" />
+        <span class="brand-name hidden sm:inline">Assod Hotel</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-6" aria-label="Primary">
+        <a href="index.html" class="nav-link is-active" data-nav-link>Home</a>
+        <a href="about.html" class="nav-link" data-nav-link>About</a>
+        <a href="rooms.html" class="nav-link" data-nav-link>Rooms</a>
+        <a href="restaurant.html" class="nav-link" data-nav-link>Restaurant</a>
+        <a href="menu.html" class="nav-link" data-nav-link>Menu</a>
+        <a href="gallery.html" class="nav-link" data-nav-link>Gallery</a>
+        <a href="services.html" class="nav-link" data-nav-link>Services</a>
+        <a href="booking.html" class="nav-link" data-nav-link>Booking</a>
+        <a href="contact.html" class="nav-link" data-nav-link>Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button type="button" class="icon-btn" data-theme-toggle aria-label="Toggle dark mode">🌙</button>
+        <a href="booking.html" class="btn btn-primary hidden sm:inline-flex !py-2.5 !px-4 text-sm">Book Now</a>
+        <button type="button" class="icon-btn lg:hidden" data-menu-open aria-label="Open menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" data-mobile-menu>
+    <div class="mobile-panel">
+      <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center gap-3">
+          <img src="assets/logo.png" alt="" class="w-10 h-10" />
+          <span class="font-display text-xl font-semibold">Assod Hotel</span>
+        </div>
+        <button type="button" class="icon-btn !text-[inherit] !border-[var(--border)] !bg-[var(--surface-2)]" data-menu-close aria-label="Close menu">×</button>
+      </div>
+      <nav class="flex flex-col gap-4 text-lg font-semibold" aria-label="Mobile">
+        <a href="index.html" data-menu-close>Home</a>
+        <a href="about.html" data-menu-close>About</a>
+        <a href="rooms.html" data-menu-close>Rooms</a>
+        <a href="restaurant.html" data-menu-close>Restaurant</a>
+        <a href="menu.html" data-menu-close>Menu</a>
+        <a href="gallery.html" data-menu-close>Gallery</a>
+        <a href="services.html" data-menu-close>Services</a>
+        <a href="booking.html" data-menu-close>Booking</a>
+        <a href="contact.html" data-menu-close>Contact</a>
+      </nav>
+      <a href="booking.html" class="btn btn-primary w-full mt-8">Book Now</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-media" style="background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&amp;fit=crop&amp;w=2000&amp;q=80')"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="container-assod">
+          <p class="section-kicker !text-white/90 mb-4" style="color:#fff">Principal Road · Hargeisa</p>
+          <h1 class="hero-brand">Assod Hotel</h1>
+          <p class="hero-sub">Experience Luxury at Assod Hotel</p>
+          <p class="max-w-xl text-white/85 text-base md:text-lg mb-8">
+            A modern luxury address in Hargeisa offering refined rooms, warm hospitality, and effortless stays for business and leisure travelers.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="booking.html" class="btn btn-primary">Book Now</a>
+            <a href="rooms.html" class="btn btn-outline">Explore Rooms</a>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator" aria-hidden="true">
+        <div class="scroll-mouse"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-16 surface">
+      <div class="container-assod">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" data-stats-grid></div>
+      </div>
+    </section>
+
+    <!-- Why Choose / Features -->
+    <section class="py-20">
+      <div class="container-assod">
+        <div class="max-w-2xl mb-12 reveal">
+          <p class="section-kicker mb-3">Why Choose Us</p>
+          <h2 class="section-title mb-4">Hospitality crafted for comfort and calm</h2>
+          <p class="section-lead">From the moment you arrive, Assod Hotel delivers thoughtful amenities and consistent five-star care.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" data-features-grid></div>
+      </div>
+    </section>
+
+    <!-- Featured Rooms -->
+    <section class="py-20 surface">
+      <div class="container-assod">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 reveal">
+          <div class="max-w-xl">
+            <p class="section-kicker mb-3">Featured Rooms</p>
+            <h2 class="section-title mb-4">Stay in rooms designed for rest and refinement</h2>
+            <p class="section-lead">Choose from luxury rooms, family spaces, and our executive suite — all with premium finishes and attentive service.</p>
+          </div>
+          <a href="rooms.html" class="btn btn-outline-dark shrink-0">View All Rooms</a>
+        </div>
+        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6" data-rooms-grid data-limit="4"></div>
+      </div>
+    </section>
+
+    <!-- Our Services Preview -->
+    <section class="py-20">
+      <div class="container-assod">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 reveal">
+          <div class="max-w-xl">
+            <p class="section-kicker mb-3">Our Services</p>
+            <h2 class="section-title mb-4">Premium amenities for every guest</h2>
+            <p class="section-lead">Restaurant dining, fitness, banquet spaces, meeting rooms, and more — all designed for a seamless Assod stay.</p>
+          </div>
+          <a href="services.html" class="btn btn-outline-dark shrink-0">View All Services</a>
+        </div>
+        <div class="services-grid" data-services-grid data-limit="3"></div>
+      </div>
+    </section>
+
+    <!-- Restaurant Preview -->
+    <section class="py-20 surface">
+      <div class="container-assod">
+        <div class="max-w-2xl mb-12 reveal">
+          <p class="section-kicker mb-3">Dining</p>
+          <h2 class="section-title mb-4">Restaurant flavors that welcome every guest</h2>
+          <p class="section-lead">Enjoy traditional Somali dishes and international favorites across breakfast, lunch, and dinner.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6" data-restaurant-preview></div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 surface">
+      <div class="container-assod">
+        <div class="max-w-2xl mb-12 reveal">
+          <p class="section-kicker mb-3">Guest Stories</p>
+          <h2 class="section-title mb-4">Trusted by travelers across the region</h2>
+        </div>
+        <div class="relative max-w-3xl mx-auto reveal" data-testimonials>
+          <div class="overflow-hidden">
+            <div class="testimonial-track flex transition-transform duration-500" data-testimonial-track style="transform:translateX(0)"></div>
+          </div>
+          <div class="flex items-center justify-between mt-6">
+            <div class="flex gap-2" data-testimonial-dots></div>
+            <div class="flex gap-2">
+              <button type="button" class="icon-btn !text-[inherit] !border-[var(--border)] !bg-[var(--surface)]" data-testimonial-prev aria-label="Previous">‹</button>
+              <button type="button" class="icon-btn !text-[inherit] !border-[var(--border)] !bg-[var(--surface)]" data-testimonial-next aria-label="Next">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Preview -->
+    <section class="py-20">
+      <div class="container-assod">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 reveal">
+          <div class="max-w-xl">
+            <p class="section-kicker mb-3">Gallery</p>
+            <h2 class="section-title mb-4">A glimpse of Assod Hotel</h2>
+            <p class="section-lead">Explore rooms, dining, reception, and the calm atmosphere that defines our property.</p>
+          </div>
+          <a href="gallery.html" class="btn btn-outline-dark shrink-0">Open Gallery</a>
+        </div>
+        <div class="gallery-grid" data-home-gallery></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 relative overflow-hidden">
+      <div class="absolute inset-0" style="background:linear-gradient(135deg,#0B7A3E 0%,#085c2e 55%,#8b1c1c 100%)"></div>
+      <div class="container-assod relative z-10 text-white text-center reveal">
+        <h2 class="font-display text-4xl md:text-5xl font-semibold mb-4">Ready for your stay in Hargeisa?</h2>
+        <p class="max-w-xl mx-auto text-white/85 mb-8">Reserve your room today and experience modern luxury with genuine Somali hospitality at Assod Hotel.</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="booking.html" class="btn bg-white text-brand-green hover:bg-brand-light">Book Your Stay</a>
+          <a href="contact.html" class="btn btn-outline">Contact Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer pt-16 pb-8">
+    <div class="container-assod grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <img src="assets/logo.png" alt="Assod Hotel" class="w-12 h-12 bg-white rounded-full p-1" />
+          <span class="font-display text-2xl font-semibold text-white">Assod Hotel</span>
+        </div>
+        <p class="text-white/70 text-sm leading-relaxed mb-5">Luxury hospitality on Principal Road, Hargeisa — crafted for comfort, events, and memorable stays.</p>
+        <a href="https://facebook.com" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">f</a>
+      </div>
+      <div>
+        <h3 class="font-bold text-white mb-4">Quick Links</h3>
+        <ul class="space-y-2 text-sm text-white/75">
+          <li><a href="about.html">About</a></li>
+          <li><a href="rooms.html">Rooms</a></li>
+          <li><a href="restaurant.html">Restaurant</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="booking.html">Booking</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold text-white mb-4">Contact</h3>
+        <ul class="space-y-2 text-sm text-white/75">
+          <li>Telesom: <a href="tel:+252523101">+252 523101</a></li>
+          <li>Somtel: <a href="tel:+252301111">+252 301111</a></li>
+          <li><a href="mailto:casood31@gmail.com">casood31@gmail.com</a></li>
+          <li>Principal Road, Hargeisa, Somaliland</li>
+          <li>Front Desk: Open 24 Hours</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold text-white mb-4">Find Us</h3>
+        <div class="map-placeholder !min-h-[180px] !text-white/70 !border-white/20">
+          <div>
+            <div class="font-semibold text-white mb-1">Google Map Placeholder</div>
+            <div class="text-xs">Principal Road, Hargeisa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-assod border-t border-white/10 pt-6 text-sm text-white/55 flex flex-col sm:flex-row gap-2 sm:justify-between">
+      <span>© <span data-year></span> Assod Hotel. All rights reserved.</span>
+      <span>Hargeisa, Somaliland</span>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
