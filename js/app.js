@@ -18,7 +18,9 @@
       phones: [
         { label: "Telesom", number: "+252 523101" },
         { label: "Somtel", number: "+252 301111" },
+        { label: "Booking", number: "+252 63 7054597", tel: "+252637054597" },
       ],
+      whatsapp: "+252637054597",
       frontDesk: "Open 24 Hours",
       social: {
         facebook: "https://facebook.com",
